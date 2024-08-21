@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bndxp27htpuma"]
+[gd_scene load_steps=6 format=3 uid="uid://bndxp27htpuma"]
 
 [ext_resource type="Shader" path="res://gui/river1.gdshader" id="1_6qa4f"]
 
@@ -7,10 +7,18 @@ noise_type = 3
 frequency = 0.02
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q3ik3"]
-width = 2000
+width = 1500
 height = 200
 seamless = true
 seamless_blend_skirt = 0.242
+noise = SubResource("FastNoiseLite_0ttjs")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h8hl3"]
+width = 1500
+height = 200
+seamless = true
+seamless_blend_skirt = 0.242
+as_normal_map = true
 noise = SubResource("FastNoiseLite_0ttjs")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygalb"]
@@ -20,6 +28,7 @@ shader_parameter/color_dawn = Vector3(1, 1, 1)
 shader_parameter/color_noon = Vector3(0.64, 0.064, 0.92)
 shader_parameter/color_dusk = Vector3(1, 1, 1)
 shader_parameter/main_noise = SubResource("NoiseTexture2D_q3ik3")
+shader_parameter/main_noise_normal = SubResource("NoiseTexture2D_h8hl3")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -37,4 +46,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0862745, 0.396691, 0.670588, 1)
+color = Color(0.0911459, 0.372843, 0.875, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+enabled = false
+energy = 0.5
+shadow_color = Color(0, 0, 0, 0.270588)
+height = 0.3
